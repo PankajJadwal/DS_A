@@ -106,7 +106,7 @@ int main()
     push(&s, 30);
     display(&s);
     push(&s, 40);
-    printf("Size--->%d", getSize(&s));
+    printf("Size--->%d", getSize(&s));// size 
     display(&s);
     push(&s, 50);
     display(&s);
@@ -124,5 +124,6 @@ int main()
     display(&s);
     pop(&s);
     display(&s);
+    
     
 }
