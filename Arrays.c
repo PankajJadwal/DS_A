@@ -1,3 +1,4 @@
+//Arrays in C programming
 #include <stdio.h>
 void display(int arr[], int n)
 {
