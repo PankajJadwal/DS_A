@@ -1,3 +1,4 @@
+//FFactorial number sieries
 #include <stdio.h>
 int fact1(int n) // O(n)
 {
