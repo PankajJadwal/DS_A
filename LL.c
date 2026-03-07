@@ -103,6 +103,6 @@ int main()
     display(head);
     head = delete_l(head);
     display(head);
-    head = delete_p(head, 3);
-    display(head);
+    // head = delete_p(head, 3);
+    // display(head);
 }

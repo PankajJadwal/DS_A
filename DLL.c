@@ -29,7 +29,7 @@ node *insert_b(node *head, int x)
 {
     node *temp = init(x);
     temp->next = head;
-    head->prev=temp;
+    head->prev = temp;
     return temp;
 }
 node *insert_l(node *head, int x)
@@ -41,7 +41,7 @@ node *insert_l(node *head, int x)
         c = c->next;
     }
     c->next = temp;
-    temp->prev=c;
+    temp->prev = c;
     return head;
 }
 node *insert_p(node *head, int x, int pos)
@@ -53,22 +53,23 @@ node *insert_p(node *head, int x, int pos)
         c = c->next;
     }
     temp->next = c->next;
-    c->next->prev=temp;
+    c->next->prev = temp;
     c->next = temp;
-    temp->prev=c;
+    temp->prev = c;
+
     return head;
 }
-node* delete_b(node* head)
+node *delete_b(node *head)
 {
-    node* temp=head;
-    head=head->next;
-    head->prev=NULL;
+    node *temp = head;
+    head = head->next;
+    head->prev = NULL;
     free(temp);
     return head;
 }
-node* delete_l(node* head)
+node *delete_l(node *head)
 {
-    node* c=head;
+    node *c = head;
     // while(c->next->next!=NULL)
     // {
     //     c=c->next;
@@ -77,25 +78,25 @@ node* delete_l(node* head)
     // c->next=NULL;
     // free(temp);
     // return head;
-    while(c->next)
+    while (c->next != NULL)
     {
-        c=c->next;
+        c = c->next;
     }
-    node* temp=c;
-    c->prev->next=NULL;
+    node *temp = c;
+    c->prev->next = NULL;
     free(temp);
     return head;
 }
-node* delete_p(node* head, int pos)
+node *delete_p(node *head, int pos)
 {
-    node* c=head;
-    for(int i=1;i<=pos-2;i++)
+    node *c = head;
+    for (int i = 1; i <= pos - 1; i++)
     {
-        c=c->next;
+        c = c->next;
     }
-    node* temp=c->next;
-    c->next=c->next->next;
-    c->next->prev=c;
+    node *temp = c;
+    c->next->prev = c->prev;
+    c->prev->next = c->next;
     free(temp);
     return head;
 }
@@ -108,9 +109,9 @@ int main()
     head->next = f;
     f->next = s;
     s->next = t;
-    t->prev=s;
-    s->prev=f;
-    f->prev=head;
+    t->prev = s;
+    s->prev = f;
+    f->prev = head;
     display(head);
     head = insert_b(head, 99);
     display(head);

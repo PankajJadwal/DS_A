@@ -71,14 +71,16 @@ node* delete_b(node* head)
     {
         c=c->next;
     }
-    // node* temp=c->next;
-    // c->next=c->next->next;
-    // free(temp);
-    // return c->next;
-    node* temp=head;
-    head=head->next;
-    c->next=head;
-    return head;
+    node* temp=c->next;
+    c->next=c->next->next;
+    free(temp);
+    return c->next;
+
+
+    // node* temp=head;
+    // head=head->next;
+    // c->next=head;
+    // return head;
 
 
    
@@ -107,7 +109,7 @@ node* delete_p(node* head, int pos)
     node* temp=c->next;
     c->next=c->next->next;
     free(temp);
-    return c->next;
+    return head;
 }
 int main()
 {
