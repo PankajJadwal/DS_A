@@ -1,90 +1,59 @@
-#include <stdio.h>
-#include <stdlib.h>
-#define MS 4
-typedef struct
+#include<stdio.h>
+#include<stdlib.h>
+typedef struct node
 {
-    int arr[MS];
-    int front;
-    int rear;
-} queue;
-void init(queue *q)
+    int data;
+    struct node * left;
+    struct node* right;
+}node;
+node* init(int x)
 {
-    q->front = -1;
-    q->rear = -1;
+    node* temp=(node*)malloc(sizeof(node));
+    temp->data=x;
+    temp->left=NULL;
+    temp->right=NULL;
+    return temp;
 }
-void push(queue *q, int x)
+void preorder(node* root)
 {
-    if (q->front == 0 && q->rear == MS - 1)
+    if(root==NULL)
     {
-        printf("Phul Bhar gaya hai Bhai!!\n");
         return;
     }
-    else if (q->front == -1 && q->rear == -1)
-    {
-        q->front = q->front + 1;
-        q->rear = q->rear + 1;
-        q->arr[q->front] = x;
-    }
-    else
-    {
-        q->rear = q->rear + 1;
-        q->arr[q->rear] = x;
-    }
+    printf("%d ", root->data);
+    preorder(root->left);
+    preorder(root->right);
 }
-int isempty(queue *q)
+void inorder(node* root)
 {
-    return (q->front == -1 && q->rear == -1);
-}
-void display(queue *q)
-{
-    if (isempty(q))
+    if(root==NULL)
     {
-        printf("Queue is empty\n");
         return;
     }
-    for (int i = q->front; i <= q->rear; i++)
-    {
-        printf("%d ", q->arr[i]);
-    }
-    printf("\n");
+    inorder(root->left);
+    printf("%d ", root->data);
+    inorder(root->right);
 }
-void pop(queue *q)
+void postorder(node* root)
 {
-    if (q->front == q->rear)
+    if(root==NULL)
     {
-        q->front = -1;
-        q->rear = -1;
+        return;
     }
-    if (q->front == 0 && q->rear == 0)
-    {
-        q->front = -1;
-        q->rear = -1;
-    }
-    ++q->front;
+    postorder(root->left);
+    postorder(root->right);
+    printf("%d ", root->data);
 }
+
 int main()
 {
-    queue q;
-    init(&q);
-    push(&q, 10);
-    display(&q);
-    push(&q, 20);
-    display(&q);
-    push(&q, 30);
-    display(&q);
-    push(&q, 40);
-    display(&q);
-    push(&q, 50);
-    display(&q);
-    pop(&q);
-    display(&q);
-    pop(&q);
-    display(&q);
-    pop(&q);
-    display(&q);
-    pop(&q);
-    display(&q);
-    pop(&q);
-    display(&q);
-    
+    node* root=init(10);
+    root->left=init(20);
+    root->right=init(30);
+    root->left->left=init(40);
+    root->right->right=init(50);
+    preorder(root);
+    inorder(root);
+    postorder(root);
+
 }
