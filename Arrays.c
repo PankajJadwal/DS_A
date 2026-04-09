@@ -1,3 +1,4 @@
+//Arrays using C language
 #include <stdio.h>
 void display(int arr[], int n)
 {
@@ -154,6 +155,7 @@ int main()
     // printf("Max--->%d", getMaxx(arr, n));
     // reverse(arr,n);
     // display(arr,n);
+    
     printf("%d ", getsmax(arr, n));// getting second max
 
 
